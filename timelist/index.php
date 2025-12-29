@@ -21,13 +21,39 @@ if (!is_array($data)) {
 }
 
 // 中身をリスト表示
-echo "<ul>";
+$list = "";
+// echo "<ul>";
 foreach ($data as $row) {
-    echo "<li>";
-    echo "順番: " . $row['sequence'] . " / ";
-    echo "停留所: " . $row['stop_name'] . " / ";
-    echo "到着: " . $row['arrival_time'] . " / ";
-    echo "出発: " . $row['departure_time'];
-    echo "</li>";
+    $list .= "<div class='stoplist'>";
+    $list .= "<p>番号: " . $row['sequence'] . "<br>";
+    $list .= "停留所: " . $row['stop_name'] . "<br>";
+    $list .= "到着: " . $row['arrival_time'] . "<br>";
+    $list .= "出発: " . $row['departure_time'] . "</p>";
+    $list .= "</div>";
 }
-echo "</ul>";
+// echo "</ul>";
+
+// echo $list;
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>時刻表</title>
+    <style>
+        .stoplist {
+            background: red;
+            width: 200px;
+            height: 100px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <?= $list ?>
+</body>
+
+</html>
