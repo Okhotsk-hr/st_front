@@ -24,6 +24,19 @@ if (isset($_POST['line'])) {
     echo "選択中：" . $lines[intval($_POST['line'])];
 }
 
+$form = "
+    <form method='POST' action='index.php'>
+        <select name='line'>";
+
+for ($i = 0; $i < count($lines); $i++) {
+    $form .= "<option value=" . $i . ">" . $lines[$i] . "</option>";
+}
+$form .= "
+        </select>
+        <input type='submit' value='送信' />
+    </form>
+";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,16 +48,7 @@ if (isset($_POST['line'])) {
 </head>
 
 <body>
-
-    <form method='POST' action='index.php'>
-        <select name='line'>
-            <option value=0><?= $lines[0] ?></option>
-            <option value=1><?= $lines[1] ?></option>
-            <option value=2><?= $lines[2] ?></option>
-        </select>
-        <input type='submit' value='送信' />
-    </form>
-
+    <?= $form ?>
 </body>
 
 </html>
